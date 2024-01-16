@@ -1,39 +1,54 @@
-import Expenses from "./components/Expenses";
+import React from "react";
 
-function App() {
+import NewExpense from "./components/NewExpense/NewExpense";
+import Expenses from "./components/Expenses/Expenses";
 
-  const expenses = [ 
+const App = () => {
+  const expenses = [
     {
-      id: 1,
-      title: 'Car Insurance',
-      amount: 12200,
-      date: new Date(2024, 2, 13)
+      id: "e1",
+      title: "Toilet Paper",
+      amount: 100,
+      date: new Date(2020, 7, 14),
+    },
+    { 
+      id: "e2", 
+      title: "New TV", 
+      amount: 7999, 
+      date: new Date(2021, 2, 12) 
     },
     {
-      id: 2,
-      title: 'Bike Insurance',
-      amount: 8000,
-      date: new Date(2024, 3, 13)
+      id: "e3",
+      title: "Car Insurance",
+      amount: 9467,
+      date: new Date(2021, 2, 28),
     },
     {
-      id: 3,
-      title: 'Health Insurance',
-      amount: 2000,
-      date: new Date(2024, 3, 23)
-    },
-    {
-      id: 4,
-      title: 'Life Insurance',
-      amount: 1200,
-      date: new Date(2024, 2, 23)
+      id: "e4",
+      title: "New Desk (Wooden)",
+      amount: 1450,
+      date: new Date(2021, 5, 12),
     },
   ];
 
+  const addExpenseHandler = (expense) => {
+    console.log("In App.js");
+    console.log(expense);
+  };
+
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
+
   return (
-    <div className="App">
-      <Expenses items={expenses}/>
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses items={expenses} />
     </div>
   );
-}
+};
 
 export default App;
